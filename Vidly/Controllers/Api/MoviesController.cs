@@ -17,6 +17,7 @@ namespace Vidly.Controllers.Api
         {
             _context = new ApplicationDbContext();
 
+
         }
 
         public IHttpActionResult GetMovies(int Id)
