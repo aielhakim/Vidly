@@ -32,11 +32,18 @@ namespace Vidly.Controllers.Api
             return Ok(AutoMapper.Mapper.Map<Movie, Dtos.MovieDto>(movie));
         }
 
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            var movies = _context.Movies.Include(x => x.Genre).ToList().Select(AutoMapper.Mapper.Map<Models.Movie, Dtos.MovieDto>);
+            var moviesquery = _context.Movies.Include(x => x.Genre);
+            if (!string.IsNullOrEmpty(query))
+            {
+                moviesquery = moviesquery.Where(x => x.Name.Contains(query) && x.NumberAvailable > 0);
+            }
 
-            return Ok(movies);
+            var movieDto = moviesquery.ToList().
+                Select(AutoMapper.Mapper.Map<Models.Movie, Dtos.MovieDto>);
+
+            return Ok(movieDto);
         }
 
         [HttpPut]
