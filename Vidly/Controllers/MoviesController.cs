@@ -109,7 +109,8 @@ namespace Vidly.Controllers
 
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        // public ActionResult Index(int? pageIndex, string sortBy)
+        public ActionResult Index()
         {
             //if (pageIndex.HasValue)
             //{
@@ -126,9 +127,11 @@ namespace Vidly.Controllers
 
 
             //var movies = GetMovies();
-            var movies = _context.Movies.Include(x => x.Genre).ToList();
+            //var movies = _context.Movies.Include(x => x.Genre).ToList();
 
-            return View(movies);
+            //return View(movies);
+
+            return View();
         }
 
 

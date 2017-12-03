@@ -7,6 +7,7 @@ using Vidly.Models;
 using System.Data.Entity;
 namespace Vidly.Controllers
 {
+    
     public class CustomersController : Controller
     {
 
@@ -24,6 +25,7 @@ namespace Vidly.Controllers
         }
 
         // GET: Customers
+
         public ActionResult Index()
         {
             //var customers = GetCustomers();
